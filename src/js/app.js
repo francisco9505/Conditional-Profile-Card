@@ -33,14 +33,41 @@ function render(variables = {}) {
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${variables.name !== null ? variables.name : ""} ${
+    variables.lastName !== null ? variables.lastName : ""
+  }</h1>
+          <h2>${variables.role !== null ? variables.role : ""}</h2>
+          <h3>${variables.city !== null ? variables.city : ""}
+  </h3>
+  <h3>${variables.country !== null ? variables.country : ""}</h3>
+          <ul class="${variables.socialMediaPosition}">
+
+            ${
+              variables.twitter
+                ? `<li><a href="https://twitter.com/${variables.twitter}"><i class="fab fa-twitter"></i></a></li>`
+                : ""
+            }
+           ${
+             variables.github
+               ? `
+             <li>
+               <a href="https://github.com/4geeksacademy/${variables.github}">
+                 <i class="fab fa-github"></i>
+               </a>
+             </li>`
+               : ""
+           } 
+           ${
+             variables.linkedin
+               ? `<li><a href="https://linkedin.com/in/${variables.linkedin}"><i class="fab fa-linkedin"></i></a></li>`
+               : ""
+           }
+           ${
+             variables.instagram
+               ? `<li><a href="https://instagram.com/${variables.instagram}"><i class="fab fa-instagram"></i></a></li>`
+               : ""
+           }
+           </ul>
           </ul>
         </div>
     `;
@@ -56,9 +83,10 @@ window.onload = function() {
     // this is the image's url that will be used as a background for the profile cover
     background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
     // this is the url for the profile avatar
-    avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
+    avatarURL:
+      "https://scontent-mad1-1.xx.fbcdn.net/v/t31.18172-8/16700336_1351726938219088_597787151910095638_o.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7f8c78&_nc_ohc=EFEOnBfflgYAX-WYIRp&_nc_ht=scontent-mad1-1.xx&oh=00_AfBSM2gUBQIhBdbsXnHsoSzkuOy2sqgvLZXvqmHLFt565Q&oe=65CDDE3C",
     // social media bar position (left or right)
-    socialMediaPosition: "position-left",
+    socialMediaPosition: "position-left,position-right",
     // social media usernames
     twitter: null,
     github: null,
